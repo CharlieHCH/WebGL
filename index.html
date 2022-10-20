@@ -83,6 +83,13 @@
         meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
         document.getElementsByTagName('head')[0].appendChild(meta);
         container.className = "unity-mobile";
+        
+        var lockFunction =  window.screen.orientation.lock;
+        if (lockFunction.call(window.screen.orientation, 'landscape')) {
+                  console.log('Orientation locked')
+        } else {
+                    console.error('There was a problem in locking the orientation')
+        }
 
         // To lower canvas resolution on mobile devices to gain some
         // performance, uncomment the following line:
@@ -91,7 +98,7 @@
         canvas.style.width = window.innerWidth + 'px';
         canvas.style.height = window.innerHeight + 'px';
 
-        unityShowBanner('WebGL builds are not supported on mobile devices.');
+        // unityShowBanner('WebGL builds are not supported on mobile devices.');
       } else {
         // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
 
